@@ -5,7 +5,7 @@ lua54 'yes'
 
 --[[ Resource Information ]]--
 name         'delete_vehicle'
-version      '1.0.0'
+version      '1.1.0'
 license      'GPL-3.0-or-later'
 author       'Rembootje'
 repository   'https://github.com/Rembootje/delete_vehicle'

@@ -1,13 +1,18 @@
 # Delete Vehicle Script
 
-A simple FiveM script to delete your vehicle using the the specified command.
+A simple FiveM script to delete vehicles using commands. Supports personal vehicle deletion and admin mass deletion.
 
 ## Features
 
-- Delete your vehicle with a command
-- Only the driver can delete the vehicle
+- Delete your own vehicle with a command (`/dv`)
+- Delete nearby vehicles when not inside a vehicle (police RP)
+- Delete all vehicles on the server with countdown (`/dvall` - admin only)
+- Only the driver can delete their own vehicle
 - Vehicle must be below a speed limit to delete (default 10 KPH)
-- Configurable error messages
+- Admin permission check for `/dvall` command
+- NPCs and their vehicles are deleted with `/dvall`
+- Players in vehicles are protected from `/dvall`
+- Fully configurable messages
 
 ## Installation
 
@@ -16,16 +21,35 @@ A simple FiveM script to delete your vehicle using the the specified command.
 
 ## Configuration
 
-For configuration you can edit `config.lua`:
+Edit `config.lua` to customize:
+- Commands (`dv`, `dvall`)
+- Speed limit for deletion
+- Distance for nearby vehicle deletion (5m default)
+- All error and countdown messages
 
 ## Usage
 
+### Delete Own Vehicle
 1. Get in a vehicle as the driver
-2. Make sure the vehicle is not moving too fast
-3. Type the specified command to delete it
+2. Make sure it's going slower than the speed limit (default 10 KPH)
+3. Type `/dv` to delete it
 
-## Error Messages
+### Delete Nearby Vehicle (Police RP)
+1. Stand near a vehicle
+2. Type `/dv` to delete the nearest vehicle within 5 meters
+3. Vehicle cannot have players inside
 
-- You must be the driver
-- You must be in a vehicle  
-- The vehicle is going too fast
+### Delete All Vehicles (Admin Only)
+1. Type `/dvall` to start the countdown
+2. Countdown will show: 15 seconds → 10 seconds → 5-1 seconds
+3. All vehicles without players will be deleted
+4. NPCs and their vehicles are deleted
+
+## Permissions
+
+- `/dv` - Available to all players
+- `/dvall` - Requires admin permissions (txAdmin access)
+
+## Note
+
+The countdown timing for `/dvall` (15, 10, 5-1 seconds) is hardcoded. I would not recommend changing these values as it may cause desync or other issues.
